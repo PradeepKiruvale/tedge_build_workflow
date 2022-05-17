@@ -130,6 +130,7 @@ impl Mapper {
     }
 
     async fn process_message(&mut self, message: Message) {
+        dbg!(&message);
         if self.health_check_topics.accept(&message) {
             let health_status = json!({
                 "status": "up",

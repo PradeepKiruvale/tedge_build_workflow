@@ -292,6 +292,7 @@ impl SmAgent {
     ) -> Result<(), AgentError> {
         while let Some(message) = requests.next().await {
             debug!("Request {:?}", message);
+            dbg!(&message);
             match &message.topic {
                 topic if self.config.request_topics_health.accept_topic(topic) => {
                     let health_status = json!({
